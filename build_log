@@ -1,0 +1,236 @@
+warning: unused manifest key: target.cfg(target_os = "none").llvm
+    Blocking waiting for file lock on build directory
+   Compiling cc v1.0.77
+   Compiling unicode-ident v1.0.6
+   Compiling libc v0.2.138
+   Compiling libc v0.2.139
+   Compiling radium v0.7.0
+   Compiling panic_abort v0.0.0 (/Users/baejiwang/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/panic_abort)
+   Compiling proc-macro2 v1.0.51
+   Compiling quote v1.0.23
+   Compiling syn v1.0.108
+   Compiling unwind v0.0.0 (/Users/baejiwang/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/unwind)
+   Compiling std v0.0.0 (/Users/baejiwang/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/std)
+   Compiling panic_unwind v0.0.0 (/Users/baejiwang/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/panic_unwind)
+   Compiling proc_macro v0.0.0 (/Users/baejiwang/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/library/proc_macro)
+   Compiling serde_derive v1.0.152
+   Compiling thiserror-impl v1.0.38
+   Compiling cfg-if v1.0.0
+   Compiling tap v1.0.1
+   Compiling num-traits v0.2.15
+   Compiling getrandom v0.2.8
+   Compiling wyz v0.5.1
+   Compiling time v0.1.45
+error: target is not supported, for more information see: https://docs.rs/getrandom/#unsupported-targets
+   --> /Users/baejiwang/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.8/src/lib.rs:268:9
+    |
+268 | /         compile_error!("target is not supported, for more information see: \
+269 | |                         https://docs.rs/getrandom/#unsupported-targets");
+    | |________________________________________________________________________^
+
+error[E0433]: failed to resolve: use of undeclared crate or module `imp`
+   --> /Users/baejiwang/.cargo/registry/src/github.com-1ecc6299db9ec823/getrandom-0.2.8/src/lib.rs:290:5
+    |
+290 |     imp::getrandom_inner(dest)
+    |     ^^^ use of undeclared crate or module `imp`
+
+For more information about this error, try `rustc --explain E0433`.
+error: could not compile `getrandom` due to 2 previous errors
+warning: build failed, waiting for other jobs to finish...
+error[E0432]: unresolved import `self::inner`
+ --> /Users/baejiwang/.cargo/registry/src/github.com-1ecc6299db9ec823/time-0.1.45/src/sys.rs:3:15
+  |
+3 | pub use self::inner::*;
+  |               ^^^^^ could not find `inner` in `self`
+
+error[E0433]: failed to resolve: could not find `SteadyTime` in `sys`
+   --> /Users/baejiwang/.cargo/registry/src/github.com-1ecc6299db9ec823/time-0.1.45/src/lib.rs:250:25
+    |
+250 |         SteadyTime(sys::SteadyTime::now())
+    |                         ^^^^^^^^^^ could not find `SteadyTime` in `sys`
+
+error[E0425]: cannot find function `get_time` in module `sys`
+   --> /Users/baejiwang/.cargo/registry/src/github.com-1ecc6299db9ec823/time-0.1.45/src/lib.rs:152:28
+    |
+152 |     let (sec, nsec) = sys::get_time();
+    |                            ^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `get_precise_ns` in module `sys`
+   --> /Users/baejiwang/.cargo/registry/src/github.com-1ecc6299db9ec823/time-0.1.45/src/lib.rs:163:10
+    |
+163 |     sys::get_precise_ns()
+    |          ^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0412]: cannot find type `SteadyTime` in module `sys`
+   --> /Users/baejiwang/.cargo/registry/src/github.com-1ecc6299db9ec823/time-0.1.45/src/lib.rs:245:28
+    |
+245 | pub struct SteadyTime(sys::SteadyTime);
+    |                            ^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `time_to_utc_tm` in module `sys`
+   --> /Users/baejiwang/.cargo/registry/src/github.com-1ecc6299db9ec823/time-0.1.45/src/lib.rs:407:10
+    |
+407 |     sys::time_to_utc_tm(sec, &mut tm);
+    |          ^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `time_to_local_tm` in module `sys`
+   --> /Users/baejiwang/.cargo/registry/src/github.com-1ecc6299db9ec823/time-0.1.45/src/lib.rs:421:10
+    |
+421 |     sys::time_to_local_tm(sec, &mut tm);
+    |          ^^^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `utc_tm_to_time` in module `sys`
+   --> /Users/baejiwang/.cargo/registry/src/github.com-1ecc6299db9ec823/time-0.1.45/src/lib.rs:435:23
+    |
+435 |             0 => sys::utc_tm_to_time(self),
+    |                       ^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0425]: cannot find function `local_tm_to_time` in module `sys`
+   --> /Users/baejiwang/.cargo/registry/src/github.com-1ecc6299db9ec823/time-0.1.45/src/lib.rs:436:23
+    |
+436 |             _ => sys::local_tm_to_time(self)
+    |                       ^^^^^^^^^^^^^^^^ not found in `sys`
+
+error[E0658]: use of unstable library feature 'restricted_std'
+  |
+  = help: add `#![feature(restricted_std)]` to the crate attributes to enable
+
+error[E0658]: use of unstable library feature 'restricted_std'
+  --> /Users/baejiwang/.cargo/registry/src/github.com-1ecc6299db9ec823/time-0.1.45/src/lib.rs:48:5
+   |
+48 | use std::cmp::Ordering;
+   |     ^^^^^^^^^^^^^^^^^^
+   |
+   = help: add `#![feature(restricted_std)]` to the crate attributes to enable
+
+error[E0658]: use of unstable library feature 'restricted_std'
+  --> /Users/baejiwang/.cargo/registry/src/github.com-1ecc6299db9ec823/time-0.1.45/src/lib.rs:49:5
+   |
+49 | use std::error::Error;
+   |     ^^^^^^^^^^^^^^^^^
+   |
+   = help: add `#![feature(restricted_std)]` to the crate attributes to enable
+
+error[E0658]: use of unstable library feature 'restricted_std'
+  --> /Users/baejiwang/.cargo/registry/src/github.com-1ecc6299db9ec823/time-0.1.45/src/lib.rs:50:5
+   |
+50 | use std::fmt;
+   |     ^^^^^^^^
+   |
+   = help: add `#![feature(restricted_std)]` to the crate attributes to enable
+
+error[E0658]: use of unstable library feature 'restricted_std'
+  --> /Users/baejiwang/.cargo/registry/src/github.com-1ecc6299db9ec823/time-0.1.45/src/lib.rs:51:16
+   |
+51 | use std::ops::{Add, Sub};
+   |                ^^^
+   |
+   = help: add `#![feature(restricted_std)]` to the crate attributes to enable
+
+error[E0658]: use of unstable library feature 'restricted_std'
+  --> /Users/baejiwang/.cargo/registry/src/github.com-1ecc6299db9ec823/time-0.1.45/src/lib.rs:51:21
+   |
+51 | use std::ops::{Add, Sub};
+   |                     ^^^
+   |
+   = help: add `#![feature(restricted_std)]` to the crate attributes to enable
+
+error[E0658]: use of unstable library feature 'restricted_std'
+ --> /Users/baejiwang/.cargo/registry/src/github.com-1ecc6299db9ec823/time-0.1.45/src/display.rs:1:16
+  |
+1 | use std::fmt::{self, Write};
+  |                ^^^^
+  |
+  = help: add `#![feature(restricted_std)]` to the crate attributes to enable
+
+error[E0658]: use of unstable library feature 'restricted_std'
+ --> /Users/baejiwang/.cargo/registry/src/github.com-1ecc6299db9ec823/time-0.1.45/src/display.rs:1:22
+  |
+1 | use std::fmt::{self, Write};
+  |                      ^^^^^
+  |
+  = help: add `#![feature(restricted_std)]` to the crate attributes to enable
+
+error[E0658]: use of unstable library feature 'restricted_std'
+  --> /Users/baejiwang/.cargo/registry/src/github.com-1ecc6299db9ec823/time-0.1.45/src/duration.rs:13:11
+   |
+13 | use std::{fmt, i64};
+   |           ^^^
+   |
+   = help: add `#![feature(restricted_std)]` to the crate attributes to enable
+
+error[E0658]: use of unstable library feature 'restricted_std'
+  --> /Users/baejiwang/.cargo/registry/src/github.com-1ecc6299db9ec823/time-0.1.45/src/duration.rs:13:16
+   |
+13 | use std::{fmt, i64};
+   |                ^^^
+   |
+   = help: add `#![feature(restricted_std)]` to the crate attributes to enable
+
+error[E0658]: use of unstable library feature 'restricted_std'
+  --> /Users/baejiwang/.cargo/registry/src/github.com-1ecc6299db9ec823/time-0.1.45/src/duration.rs:14:5
+   |
+14 | use std::error::Error;
+   |     ^^^^^^^^^^^^^^^^^
+   |
+   = help: add `#![feature(restricted_std)]` to the crate attributes to enable
+
+error[E0658]: use of unstable library feature 'restricted_std'
+  --> /Users/baejiwang/.cargo/registry/src/github.com-1ecc6299db9ec823/time-0.1.45/src/duration.rs:15:16
+   |
+15 | use std::ops::{Add, Sub, Mul, Div, Neg, FnOnce};
+   |                ^^^
+   |
+   = help: add `#![feature(restricted_std)]` to the crate attributes to enable
+
+error[E0658]: use of unstable library feature 'restricted_std'
+  --> /Users/baejiwang/.cargo/registry/src/github.com-1ecc6299db9ec823/time-0.1.45/src/duration.rs:15:21
+   |
+15 | use std::ops::{Add, Sub, Mul, Div, Neg, FnOnce};
+   |                     ^^^
+   |
+   = help: add `#![feature(restricted_std)]` to the crate attributes to enable
+
+error[E0658]: use of unstable library feature 'restricted_std'
+  --> /Users/baejiwang/.cargo/registry/src/github.com-1ecc6299db9ec823/time-0.1.45/src/duration.rs:15:26
+   |
+15 | use std::ops::{Add, Sub, Mul, Div, Neg, FnOnce};
+   |                          ^^^
+   |
+   = help: add `#![feature(restricted_std)]` to the crate attributes to enable
+
+error[E0658]: use of unstable library feature 'restricted_std'
+  --> /Users/baejiwang/.cargo/registry/src/github.com-1ecc6299db9ec823/time-0.1.45/src/duration.rs:15:31
+   |
+15 | use std::ops::{Add, Sub, Mul, Div, Neg, FnOnce};
+   |                               ^^^
+   |
+   = help: add `#![feature(restricted_std)]` to the crate attributes to enable
+
+error[E0658]: use of unstable library feature 'restricted_std'
+  --> /Users/baejiwang/.cargo/registry/src/github.com-1ecc6299db9ec823/time-0.1.45/src/duration.rs:15:36
+   |
+15 | use std::ops::{Add, Sub, Mul, Div, Neg, FnOnce};
+   |                                    ^^^
+   |
+   = help: add `#![feature(restricted_std)]` to the crate attributes to enable
+
+error[E0658]: use of unstable library feature 'restricted_std'
+  --> /Users/baejiwang/.cargo/registry/src/github.com-1ecc6299db9ec823/time-0.1.45/src/duration.rs:15:41
+   |
+15 | use std::ops::{Add, Sub, Mul, Div, Neg, FnOnce};
+   |                                         ^^^^^^
+   |
+   = help: add `#![feature(restricted_std)]` to the crate attributes to enable
+
+error[E0658]: use of unstable library feature 'restricted_std'
+  --> /Users/baejiwang/.cargo/registry/src/github.com-1ecc6299db9ec823/time-0.1.45/src/duration.rs:16:5
+   |
+16 | use std::time::Duration as StdDuration;
+   |     ^^^^^^^^^^^^^^^^^^^
+   |
+   = help: add `#![feature(restricted_std)]` to the crate attributes to enable
+
+Some errors have detailed explanations: E0412, E0425, E0432, E0433, E0658.
+For more information about an error, try `rustc --explain E0412`.
+error: could not compile `time` due to 27 previous errors

@@ -1,0 +1,41 @@
+[package]
+name = "J_os"
+version = "0.1.0"
+authors = ["JiwangBae <bjy502@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+bootloader = "*"
+bootimage = "*"
+serde = "*"
+
+
+[profile.dev]
+panic = "abort"
+[target.'cfg(target_os = "none")'.llvm]
+rustflags = [
+  "-C",
+  "link-arg=-nostartfiles",
+  "-C",
+  "link-arg=-T",
+  "linker.ld",
+  "-C",
+  "link-arg=-nostdlib",
+  "-C",
+  "link-arg=--entry=_start",
+  "-C",
+  "link-arg=-L.",
+  "-C",
+  "link-arg=-L./build",
+  "-C",
+  "link-arg=-L./target/thumbv7em-none-eabi/release/deps",
+  "-C",
+  "link-arg=-L./target/thumbv7em-none-eabi/debug/deps",
+  "-C",
+  "linker=arm-none-eabi-ld",
+]
+
+[profile.release]
+panic = "abort"
