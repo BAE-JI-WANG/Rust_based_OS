@@ -1,0 +1,7 @@
+cargo:rerun-if-changed=/Users/baejiwang/Documents/GitHub/Rust_based_OS/J_os/Cargo.toml
+cargo:rustc-link-search=native=/Users/baejiwang/Documents/GitHub/Rust_based_OS/J_os/target/bootimage/bootloader/x86_64-bootloader/release/build/bootloader-73aea6a4b5e0a992/out
+cargo:rustc-link-lib=static=kernel_bin-J_os
+cargo:rerun-if-env-changed=KERNEL
+cargo:rerun-if-env-changed=KERNEL_MANIFEST
+cargo:rerun-if-changed=/Users/baejiwang/Documents/GitHub/Rust_based_OS/J_os/target/x86_64-J_os/debug/J_os
+cargo:rerun-if-changed=build.rs

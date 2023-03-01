@@ -1,34 +1,51 @@
-// cargo build --target thumbv7em-none-eabihf
-#![feature(restricted_std)]
+#![no_std]
+#![no_main]
+#![feature(custom_test_frameworks)]
+#![test_runner(J_os::test_runner)]
+#![reexport_test_harness_main = "test_main"]
 
-
-#![no_std] // don't link the Rust standard library
-#![no_main] // disable all Rust-level entry points
-// #![no_core]
-// #![feature(repr128)]
-// #![feature(restricted_std)]
-
+use J_os::println;
 use core::panic::PanicInfo;
 
-static HELLO: &[u8] = b"Hello World!";
+#[no_mangle]
+pub extern "C" fn _start() -> ! {
+    println!("Hello World{}", "!");
 
-/// This function is called on panic
+    J_os::init();
+
+    fn stack_overflow() {
+        stack_overflow(); // for each recursion, the return address is pushed
+    }
+
+    // uncomment line below to trigger a stack overflow
+    // stack_overflow();
+
+    #[cfg(test)]
+    test_main();
+
+    println!("It did not crash!");
+    J_os::hlt_loop(); 
+    loop {
+        use J_os::print;
+        print!("-");
+    }
+}
+
+/// This function is called on panic.
+#[cfg(not(test))]
 #[panic_handler]
-fn panic(_info: &PanicInfo) -> ! {
+fn panic(info: &PanicInfo) -> ! {
+    println!("{}", info);
     loop {}
 }
 
-#[no_mangle] // don't mangle the name of this function
-pub extern "C" fn _start() -> ! {
-    let vga_buffer = 0xb8000 as *mut u8;
+#[cfg(test)]
+#[panic_handler]
+fn panic(info: &PanicInfo) -> ! {
+    J_os::test_panic_handler(info)
+}
 
-    for (i, &byte) in HELLO.iter().enumerate() {
-        unsafe {
-            *vga_buffer.offset(i as isize * 2) = byte;
-            *vga_buffer.offset(i as isize * 2 + 1) = 0xb;
-        }
-    }
-    // this function is the entry point, since the linker looks for a function
-    // named `_start` by default
-    loop {}
+#[test_case]
+fn trivial_assertion() {
+    assert_eq!(1, 1);
 }
