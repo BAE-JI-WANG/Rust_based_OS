@@ -13,22 +13,35 @@ pub extern "C" fn _start() -> ! {
 
     J_os::init();
 
-    fn stack_overflow() {
-        stack_overflow(); // for each recursion, the return address is pushed
-    }
+    use x86_64::registers::control::Cr3;
+
+    let (level_4_page_table, _) = Cr3::read();
+    println!("Level 4 page table at: {:?}", level_4_page_table.start_address());
+
+    // fn stack_overflow() {
+    //     stack_overflow(); // for each recursion, the return address is pushed
+    // }
 
     // uncomment line below to trigger a stack overflow
     // stack_overflow();
+    // let ptr = 0xdeadbeaf as *mut u32;
+    // unsafe { *ptr = 42; }
+
+    // let ptr = 0x2031b2 as *mut u32;
+
+    // // read from a code page
+    // unsafe { let x = *ptr; }
+    // println!("read worked");
+
+    // // write to a code page
+    // unsafe { *ptr = 42; }
+    // println!("write worked");
 
     #[cfg(test)]
     test_main();
 
     println!("It did not crash!");
-    J_os::hlt_loop(); 
-    loop {
-        use J_os::print;
-        print!("-");
-    }
+    J_os::hlt_loop();
 }
 
 /// This function is called on panic.
